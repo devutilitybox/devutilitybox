@@ -26,18 +26,18 @@ components:
       - card
       - ui
       - shadcn
-- name: Button
-  description: Um botão estilizado usando shadcn UI.
-  code: |
-    import { Button } from "@/components/ui/button";
+  - name: Button
+    description: Um botão estilizado usando shadcn UI.
+    code: |
+      import { Button } from "@/components/ui/button";
 
-    export default function ButtonExample() {
-      return (
-        <Button variant="primary">Clique Aqui</Button>
-      );
-    }
-  componentPath: "@/components/examples/ButtonExample"
-  tags:
-    - button
-    - ui
-    - shadcn
+      export default function ButtonExample() {
+        return (
+          <Button variant="primary">Clique Aqui</Button>
+        );
+      }
+    componentPath: "@/components/examples/ButtonExample"
+    tags:
+      - button
+      - ui
+      - shadcn
