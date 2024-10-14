@@ -1,0 +1,32 @@
+# cheat-sheet/scenarios.yaml
+
+scenarios:
+  - title: Reverter um arquivo com commit errado antes de fazer push
+    problem: >
+      Commitei um arquivo por engano e ainda não fiz push. Como posso remover esse arquivo do commit?
+    solution:
+      steps:
+        - description: Voltar o commit mantendo as alterações no staging
+          command: git reset --soft HEAD~1
+        - description: Remover o arquivo da área de staging
+          command: git reset <file>
+        - description: Recommit sem o arquivo indesejado
+          command: git commit -m "Sua mensagem de commit corrigida"
+    tags:
+      - commit
+      - reset
+      - staging
+  - title: Desfazer um merge
+    problem: >
+      Fiz um merge que preciso desfazer. Como retorno ao estado anterior?
+    solution:
+      steps:
+        - description: Identificar o commit antes do merge usando git reflog
+          command: git reflog
+        - description: Resetar o branch para o commit anterior ao merge
+          command: git reset --hard <commit_hash>
+          caution: Isso descartará quaisquer alterações após o commit especificado.
+    tags:
+      - merge
+      - reset
+      - reflog

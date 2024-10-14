@@ -1,0 +1,29 @@
+# cheat-sheet.yaml
+
+title: Git Cheat Sheet
+description: Uma lista colaborativa de comandos Git úteis.
+commands:
+  - command: git init
+    description: Inicializa um novo repositório Git.
+  - command: git clone <repo>
+    description: Clona um repositório remoto para sua máquina local.
+  - command: git status
+    description: Mostra o status da árvore de trabalho.
+  - command: git add <file>
+    description: Adiciona um arquivo à área de staging.
+  - command: git commit -m 'mensagem'
+    description: Comita as alterações staged com uma mensagem.
+  - command: git push
+    description: Envia os commits para o repositório remoto.
+  - command: git pull
+    description: Busca e integra alterações do repositório remoto.
+  - command: git branch
+    description: Lista, cria ou deleta branches.
+  - command: git checkout <branch>
+    description: Muda para um branch diferente.
+  - command: git merge <branch>
+    description: Faz merge do branch especificado no branch atual.
+  - command: git log
+    description: Mostra o histórico de commits.
+  - command: git reset --hard
+    description: Reseta o diretório de trabalho para o último commit, descartando alterações.
