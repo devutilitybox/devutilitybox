@@ -1,5 +1,4 @@
-# shadcn-components/components.yaml
-
+---
 components:
   - name: Card
     description: Um componente de cartão simples.
@@ -24,5 +23,20 @@ components:
     componentPath: "@/components/examples/CardExample"
     tags:
       - card
+      - ui
+      - shadcn
+  - name: Button
+    description: Um botão estilizado usando shadcn UI.
+    code: |
+      import { Button } from "@/components/ui/button";
+
+      export default function ButtonExample() {
+        return (
+          <Button variant="primary">Clique Aqui</Button>
+        );
+      }
+    componentPath: "@/components/examples/ButtonExample"
+    tags:
+      - button
       - ui
       - shadcn
