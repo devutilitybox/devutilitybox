@@ -1,4 +1,5 @@
----
+# shadcn-components/components.yaml
+
 components:
   - name: Card
     description: Um componente de cartão simples.
