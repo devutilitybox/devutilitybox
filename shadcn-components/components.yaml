@@ -1,4 +1,3 @@
----
 components:
   - name: Card
     description: Um componente de cartão simples.
@@ -25,7 +24,6 @@ components:
       - card
       - ui
       - shadcn
-
   - name: Button
     description: Um botão estilizado usando shadcn UI.
     code: |
@@ -41,4 +39,3 @@ components:
       - button
       - ui
       - shadcn
-...
