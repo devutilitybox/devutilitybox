@@ -1,0 +1,42 @@
+# useful-sites/sites.yaml
+
+sites:
+  - title: Stack Overflow
+    description: Uma plataforma de perguntas e respostas para desenvolvedores.
+    url: https://stackoverflow.com
+    tags:
+      - javascript
+      - react
+      - nodejs
+
+  - title: MDN Web Docs
+    description: Documentação sobre tecnologias web.
+    url: https://developer.mozilla.org
+    tags:
+      - html
+      - css
+      - javascript
+
+  - title: Dev.to
+    description: Uma comunidade para compartilhar e descobrir ótimos artigos de desenvolvimento.
+    url: https://dev.to
+    tags:
+      - comunidade
+      - blog
+      - desenvolvimento
+
+  - title: GitHub
+    description: Hospedagem de código-fonte com controle de versão usando o Git.
+    url: https://github.com
+    tags:
+      - git
+      - controle-de-versao
+      - código-fonte
+
+  - title: FreeCodeCamp
+    description: Recursos gratuitos para aprender a programar.
+    url: https://www.freecodecamp.org
+    tags:
+      - aprendizado
+      - programação
+      - tutoriais
