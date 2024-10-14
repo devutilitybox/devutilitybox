@@ -1,0 +1,69 @@
+# code-snippets/snippets.yaml
+
+snippets:
+  - title: Next.js Home Page
+    description: Um exemplo simples de página inicial em Next.js
+    code: |
+      // app/page.js
+      import Link from 'next/link';
+
+      export default function Home() {
+        return (
+          <div>
+            <h1>Página Inicial</h1>
+            <Link href="/about">
+              <a>Vá para About</a>
+            </Link>
+          </div>
+        );
+      }
+    tags:
+      - nextjs
+      - javascript
+
+  - title: Next.js About Page
+    description: Exemplo de página About em Next.js
+    code: |
+      // app/about/page.js
+      export default function About() {
+        return <h1>Sobre Nós</h1>;
+      }
+    tags:
+      - nextjs
+      - javascript
+
+  - title: Função Soma em JavaScript
+    description: Uma função simples para somar dois números em JavaScript
+    code: |
+      function soma(a, b) {
+        return a + b;
+      }
+
+      console.log(soma(2, 3)); // Saída: 5
+    tags:
+      - javascript
+      - função
+
+  - title: Componente React Simples
+    description: Exemplo de um componente funcional simples em React
+    code: |
+      import React from 'react';
+
+      const HelloWorld = () => {
+        return <h1>Hello, World!</h1>;
+      };
+
+      export default HelloWorld;
+    tags:
+      - react
+      - javascript
+
+  - title: Consulta SQL para Selecionar Todos os Registros
+    description: Seleciona todos os registros de uma tabela no SQL
+    code: |
+      SELECT * FROM nome_da_tabela;
+    tags:
+      - sql
+      - banco-de-dados
+
+  # Adicione mais snippets aqui
