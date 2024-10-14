@@ -1,6 +1,6 @@
 components:
   - name: Card
-    description: Um componente de cartão simples.
+    description: Um componente de cartao simples.
     code: |
       import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 
@@ -8,13 +8,13 @@ components:
         return (
           <Card>
             <CardHeader>
-              <CardTitle>Título do Card</CardTitle>
+              <CardTitle>Titulo do Card</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Este é um exemplo de um componente de card usando shadcn UI.</p>
+              <p>Este e um exemplo de um componente de card usando shadcn UI.</p>
             </CardContent>
             <CardFooter>
-              <p>Conteúdo do rodapé aqui.</p>
+              <p>Conteudo do rodape aqui.</p>
             </CardFooter>
           </Card>
         );
@@ -25,7 +25,7 @@ components:
       - ui
       - shadcn
   - name: Button
-    description: Um botão estilizado usando shadcn UI.
+    description: Um botao estilizado usando shadcn UI.
     code: |
       import { Button } from "@/components/ui/button";
 
