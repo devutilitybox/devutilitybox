@@ -25,6 +25,7 @@ components:
       - card
       - ui
       - shadcn
+
   - name: Button
     description: Um botão estilizado usando shadcn UI.
     code: |
