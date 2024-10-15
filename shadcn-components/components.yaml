@@ -31,7 +31,7 @@ components:
 
       export default function ButtonExample() {
         return (
-          <Button variant="primary">Clique Aqui</Button>
+          <Button variant="default">Clique Aqui</Button>
         );
       }
     componentPath: "@/components/examples/ButtonExample"
