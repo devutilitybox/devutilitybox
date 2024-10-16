@@ -1,0 +1,243 @@
+scenarios:
+  - title: Revert a file from a wrong commit before pushing
+    problem: >
+      I accidentally committed a file and haven't pushed yet. How can I remove this file from the commit?
+    solution:
+      steps:
+        - description: Reset the commit while keeping the changes in the staging area
+          command: git reset --soft HEAD~1
+        - description: Remove the file from the staging area
+          command: git reset <file>
+        - description: Recommit without the unwanted file
+          command: git commit -m "Your corrected commit message"
+    tags:
+      - commit
+      - reset
+      - staging
+
+  - title: Undo a merge
+    problem: >
+      I made a merge that I need to undo. How can I revert to the previous state?
+    solution:
+      steps:
+        - description: Identify the commit before the merge using git reflog
+          command: git reflog
+        - description: Reset the branch to the commit before the merge
+          command: git reset --hard <commit_hash>
+          caution: This will discard any changes after the specified commit.
+    tags:
+      - merge
+      - reset
+      - reflog
+
+  - title: Recover an accidentally deleted file
+    problem: >
+      I deleted an important file and already committed the deletion. How can I recover it?
+    solution:
+      steps:
+        - description: Find the commit where the file was deleted
+          command: git log --diff-filter=D --summary
+        - description: Restore the deleted file from the previous commit
+          command: git checkout <commit_hash>^ -- <file_path>
+        - description: Commit the restoration of the file
+          command: git commit -m "Restore accidentally deleted file"
+    tags:
+      - delete
+      - restore
+      - commit
+
+  - title: Modify the last commit message
+    problem: >
+      I need to change the message of my last commit. How can I do this?
+    solution:
+      steps:
+        - description: Amend the last commit message
+          command: git commit --amend -m "New commit message"
+        - description: Force push if you have already pushed the commit
+          command: git push --force
+          caution: Be careful when force pushing, as it can affect other developers' work.
+    tags:
+      - commit
+      - amend
+      - message
+
+  - title: Sync a fork with the original repository
+    problem: >
+      I forked a repository, but the original has received updates. How can I sync my fork?
+    solution:
+      steps:
+        - description: Add the original repository as an upstream remote
+          command: git remote add upstream <original_repo_url>
+        - description: Fetch the changes from the upstream
+          command: git fetch upstream
+        - description: Merge the changes into your local branch
+          command: git merge upstream/master
+        - description: Push the changes to your fork on GitHub
+          command: git push origin master
+    tags:
+      - fork
+      - upstream
+      - sync
+
+  - title: Resolve merge conflicts
+    problem: >
+      While merging a branch, conflicts occurred. How do I resolve these conflicts?
+    solution:
+      steps:
+        - description: Identify the files with conflicts
+          command: git status
+        - description: Edit the conflicting files to resolve the conflicts
+          command: Open the indicated files and manually resolve the conflicts
+        - description: Mark the files as resolved
+          command: git add <file>
+        - description: Complete the merge
+          command: git commit
+    tags:
+      - merge
+      - conflict
+      - resolve
+
+  - title: Discard uncommitted local changes
+    problem: >
+      I made changes to some files, but I want to discard them. How do I do that?
+    solution:
+      steps:
+        - description: Discard changes to a specific file
+          command: git checkout -- <file>
+        - description: Discard changes to all files
+          command: git reset --hard
+          caution: This will discard all uncommitted changes. Use with caution.
+    tags:
+      - discard
+      - changes
+      - reset
+
+  - title: Rewrite commit history with interactive rebase
+    problem: >
+      I want to combine several commits into one or reorder them. How can I do this?
+    solution:
+      steps:
+        - description: Start the interactive rebase
+          command: git rebase -i HEAD~<number_of_commits>
+        - description: In the interface that opens, modify the actions (pick, squash, etc.) as desired
+          command: Edit the opened file to reorder or combine commits
+        - description: Save and close the editor to apply the changes
+          command: The changes will be applied automatically
+    tags:
+      - rebase
+      - history
+      - commits
+
+  - title: Find the introduction of a bug using bisect
+    problem: >
+      There is a bug in my code, but I don't know which commit introduced it. How can I find the problematic commit?
+    solution:
+      steps:
+        - description: Start bisect
+          command: git bisect start
+        - description: Mark the current commit as bad
+          command: git bisect bad
+        - description: Mark a known good commit
+          command: git bisect good <commit_hash>
+        - description: Test each revision presented by Git and mark it as good or bad
+          command: git bisect good or git bisect bad
+        - description: Once found, end the bisect
+          command: git bisect reset
+    tags:
+      - bisect
+      - bug
+      - debug
+
+  - title: Work with submodules
+    problem: >
+      I need to add another Git repository inside my project. How can I do this using submodules?
+    solution:
+      steps:
+        - description: Add the submodule to the project
+          command: git submodule add <repo_url> <path>
+        - description: Initialize submodules after cloning the repository
+          command: git submodule update --init --recursive
+        - description: Update all submodules to their latest versions
+          command: git submodule update --remote
+    tags:
+      - submodule
+      - nested
+      - repository
+
+  - title: Ignore files already tracked
+    problem: >
+      I added a file to version control, but now I want to ignore it using .gitignore. How do I do that?
+    solution:
+      steps:
+        - description: Remove the file from the index (staging area)
+          command: git rm --cached <file>
+        - description: Add the file to .gitignore
+          command: Edit the .gitignore file and add the file path
+        - description: Commit the changes
+          command: git commit -m "Remove file from version control and add it to .gitignore"
+    tags:
+      - ignore
+      - gitignore
+      - remove
+
+  - title: Clone a specific repository or branch
+    problem: >
+      How can I clone only a specific directory or branch from a repository?
+    solution:
+      steps:
+        - description: Clone a specific branch
+          command: git clone -b <branch> --single-branch <repo_url>
+        - description: Clone only a specific directory (requires server support)
+          command: git sparse-checkout set <directory>
+          caution: Sparse checkout requires additional configuration
+    tags:
+      - clone
+      - branch
+      - directory
+
+  - title: Clean untracked files and directories
+    problem: >
+      My repository is filled with untracked files and directories. How can I quickly remove them?
+    solution:
+      steps:
+        - description: Show what will be removed without executing
+          command: git clean -n -d
+        - description: Remove untracked files and directories
+          command: git clean -f -d
+          caution: Make sure you don't need these files before removing them
+    tags:
+      - clean
+      - untracked
+      - files
+
+  - title: Change the URL of a remote repository
+    problem: >
+      I changed the URL of my remote repository. How do I update the remote in my local repository?
+    solution:
+      steps:
+        - description: Check the current remotes
+          command: git remote -v
+        - description: Change the remote URL
+          command: git remote set-url origin <new_url>
+        - description: Confirm the URL has been updated
+          command: git remote -v
+    tags:
+      - remote
+      - url
+      - update
+
+  - title: Delete a local or remote branch
+    problem: >
+      I created a branch that I no longer need. How can I delete it locally and remotely?
+    solution:
+      steps:
+        - description: Delete a local branch
+          command: git branch -d <branch_name>
+        - description: Force delete if the branch hasn't been merged
+          command: git branch -D <branch_name>
+        - description: Delete a remote branch
+          command: git push origin --delete <branch_name>
+    tags:
+      - branch
+      - delete
+      - remote
