@@ -1,0 +1,55 @@
+title: Docker Cheat Sheet
+description: A collaborative list of useful Docker commands.
+commands:
+  - command: docker --version
+    description: Displays the version of Docker installed on the system.
+  - command: docker pull <image>
+    description: Downloads an image from Docker Hub.
+  - command: docker images
+    description: Lists all Docker images available locally.
+  - command: docker rmi <image_id>
+    description: Removes a Docker image by its ID.
+  - command: docker ps
+    description: Lists all running containers.
+  - command: docker ps -a
+    description: Lists all containers, including stopped ones.
+  - command: docker run <image>
+    description: Creates and starts a container from an image.
+  - command: docker stop <container_id>
+    description: Stops a running container.
+  - command: docker start <container_id>
+    description: Starts a stopped container.
+  - command: docker rm <container_id>
+    description: Removes a stopped container.
+  - command: docker exec -it <container_id> bash
+    description: Accesses the terminal of a running container.
+  - command: docker logs <container_id>
+    description: Displays the logs of a container.
+  - command: docker build -t <image_name> .
+    description: Builds a new Docker image from a Dockerfile.
+  - command: docker-compose up
+    description: Starts containers defined in a `docker-compose.yml` file.
+  - command: docker-compose down
+    description: Stops and removes the containers created by `docker-compose up`.
+  - command: docker network ls
+    description: Lists all Docker networks.
+  - command: docker network create <network_name>
+    description: Creates a new Docker network.
+  - command: docker volume ls
+    description: Lists all Docker volumes.
+  - command: docker volume rm <volume_name>
+    description: Removes a Docker volume.
+  - command: docker inspect <container_id>
+    description: Shows detailed information about a container.
+  - command: docker system prune
+    description: Removes unused containers, volumes, and networks to free up space.
+  - command: docker save -o <file_name>.tar <image_name>
+    description: Saves a Docker image to a tar file.
+  - command: docker load -i <file_name>.tar
+    description: Loads a Docker image from a tar file.
+  - command: docker stats
+    description: Displays real-time statistics of running containers.
+  - command: docker tag <source_image> <target_image>
+    description: Tags a Docker image with a new name or tag.
+  - command: docker push <image_name>
+    description: Pushes a Docker image to a remote repository (Docker Hub).

@@ -1,0 +1,119 @@
+scenarios:
+  - title: Connect to a container and troubleshoot issues
+    problem: >
+      I need to access a running container to check logs or troubleshoot an issue. How can I do this?
+    solution:
+      steps:
+        - description: Use the docker exec command to access the container's bash shell
+          command: docker exec -it <container_id> bash
+        - description: Navigate to the necessary files or check the logs directly
+          command: cat /path/to/logfile
+    tags:
+      - container
+      - troubleshooting
+      - logs
+
+  - title: Clean up unused resources (volumes, containers, networks)
+    problem: >
+      My system is accumulating many Docker resources that are no longer in use. How can I clean them up?
+    solution:
+      steps:
+        - description: Clean up unused volumes, containers, and networks
+          command: docker system prune
+        - description: Explicitly remove volumes if necessary
+          command: docker volume rm <volume_name>
+        - description: Remove unused images
+          command: docker image prune
+    tags:
+      - cleanup
+      - volumes
+      - images
+
+  - title: Restart a container with an updated image
+    problem: >
+      I updated a Docker image, but my container is still using the old version. How can I restart the container with the updated image?
+    solution:
+      steps:
+        - description: Stop the running container
+          command: docker stop <container_id>
+        - description: Remove the stopped container
+          command: docker rm <container_id>
+        - description: Run a new container with the updated image
+          command: docker run <image>
+    tags:
+      - update
+      - container
+      - image
+
+  - title: Use Docker Compose for local development
+    problem: >
+      I need to set up multiple containers for my application locally (database, backend, frontend). How can I do this easily with Docker Compose?
+    solution:
+      steps:
+        - description: Define the containers in the docker-compose.yml file
+          command: |
+            version: '3'
+            services:
+              db:
+                image: postgres
+                environment:
+                  POSTGRES_USER: user
+                  POSTGRES_PASSWORD: pass
+              app:
+                image: myapp
+                ports:
+                  - "3000:3000"
+                depends_on:
+                  - db
+        - description: Start the services
+          command: docker-compose up
+        - description: Stop and remove the services when no longer needed
+          command: docker-compose down
+    tags:
+      - docker-compose
+      - development
+      - services
+
+  - title: Move a Docker image between machines
+    problem: >
+      I need to move a Docker image created on one machine to another without uploading it to a public repository. How can I do this?
+    solution:
+      steps:
+        - description: Save the image to a tar file
+          command: docker save -o <file_name>.tar <image_name>
+        - description: Transfer the file to the new machine
+          command: Use tools like scp or rsync to transfer the file
+        - description: Load the image on the new machine
+          command: docker load -i <file_name>.tar
+    tags:
+      - save
+      - load
+      - transfer
+
+  - title: Run a container in the background
+    problem: >
+      I need to run a container, but I don't want it to block my terminal. How can I do this?
+    solution:
+      steps:
+        - description: Use the -d flag to run the container in detached mode
+          command: docker run -d <image_name>
+        - description: Verify that the container is running
+          command: docker ps
+    tags:
+      - background
+      - container
+      - detached
+
+  - title: Check resource usage of a container
+    problem: >
+      My container is using too much memory and CPU. How can I check the resource usage of a running container?
+    solution:
+      steps:
+        - description: Use the docker stats command to monitor resource usage
+          command: docker stats <container_id>
+        - description: Check statistics for all containers
+          command: docker stats
+    tags:
+      - stats
+      - resources
+      - monitoring

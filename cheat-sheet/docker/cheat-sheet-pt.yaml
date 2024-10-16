@@ -1,0 +1,57 @@
+# cheat-sheet/docker/cheat-sheet.yaml
+
+title: Docker Cheat Sheet
+description: Uma lista colaborativa de comandos Docker úteis.
+commands:
+  - command: docker --version
+    description: Mostra a versão do Docker instalada no sistema.
+  - command: docker pull <image>
+    description: Faz o download de uma imagem do Docker Hub.
+  - command: docker images
+    description: Lista todas as imagens Docker disponíveis localmente.
+  - command: docker rmi <image_id>
+    description: Remove uma imagem Docker pelo ID.
+  - command: docker ps
+    description: Lista todos os contêineres em execução.
+  - command: docker ps -a
+    description: Lista todos os contêineres, incluindo os parados.
+  - command: docker run <image>
+    description: Cria e inicia um contêiner a partir de uma imagem.
+  - command: docker stop <container_id>
+    description: Para um contêiner em execução.
+  - command: docker start <container_id>
+    description: Inicia um contêiner parado.
+  - command: docker rm <container_id>
+    description: Remove um contêiner parado.
+  - command: docker exec -it <container_id> bash
+    description: Acessa o terminal de um contêiner em execução.
+  - command: docker logs <container_id>
+    description: Exibe os logs de um contêiner.
+  - command: docker build -t <image_name> .
+    description: Cria uma nova imagem Docker a partir de um Dockerfile.
+  - command: docker-compose up
+    description: Inicia contêineres definidos em um arquivo `docker-compose.yml`.
+  - command: docker-compose down
+    description: Para e remove os contêineres criados pelo `docker-compose up`.
+  - command: docker network ls
+    description: Lista todas as redes Docker.
+  - command: docker network create <network_name>
+    description: Cria uma nova rede Docker.
+  - command: docker volume ls
+    description: Lista todos os volumes Docker.
+  - command: docker volume rm <volume_name>
+    description: Remove um volume Docker.
+  - command: docker inspect <container_id>
+    description: Mostra informações detalhadas sobre um contêiner.
+  - command: docker system prune
+    description: Remove contêineres, volumes e redes não utilizados para liberar espaço.
+  - command: docker save -o <file_name>.tar <image_name>
+    description: Salva uma imagem Docker em um arquivo tar.
+  - command: docker load -i <file_name>.tar
+    description: Carrega uma imagem Docker a partir de um arquivo tar.
+  - command: docker stats
+    description: Exibe estatísticas em tempo real dos contêineres em execução.
+  - command: docker tag <source_image> <target_image>
+    description: Marca uma imagem Docker com um novo nome ou tag.
+  - command: docker push <image_name>
+    description: Envia uma imagem Docker para um repositório remoto (Docker Hub).

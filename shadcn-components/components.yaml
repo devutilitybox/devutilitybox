@@ -1,0 +1,41 @@
+components:
+  - name: Card
+    description: Um componente de cartão simples.
+    code: |
+      import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+
+      export default function CardExample() {
+        return (
+          <Card>
+            <CardHeader>
+              <CardTitle>Título do Card</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>Este é um exemplo de um componente de card usando shadcn UI.</p>
+            </CardContent>
+            <CardFooter>
+              <p>Conteúdo do rodapé aqui.</p>
+            </CardFooter>
+          </Card>
+        );
+      }
+    componentPath: "@/components/examples/CardExample"
+    tags:
+      - card
+      - ui
+      - shadcn
+  - name: Button
+    description: Um botão estilizado usando shadcn UI.
+    code: |
+      import { Button } from "@/components/ui/button";
+
+      export default function ButtonExample() {
+        return (
+          <Button variant="default">Clique Aqui</Button>
+        );
+      }
+    componentPath: "@/components/examples/ButtonExample"
+    tags:
+      - button
+      - ui
+      - shadcn

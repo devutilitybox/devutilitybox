@@ -1,0 +1,145 @@
+# cheat-sheet.yaml
+
+title: Git Cheat Sheet
+description: Uma lista colaborativa de comandos Git úteis.
+commands:
+  - command: git init
+    description: Inicializa um novo repositório Git.
+  - command: git clone <repo>
+    description: Clona um repositório remoto para sua máquina local.
+  - command: git status
+    description: Mostra o status da árvore de trabalho.
+  - command: git add <file>
+    description: Adiciona um arquivo à área de staging.
+  - command: git commit -m 'mensagem'
+    description: Comita as alterações staged com uma mensagem.
+  - command: git push
+    description: Envia os commits para o repositório remoto.
+  - command: git pull
+    description: Busca e integra alterações do repositório remoto.
+  - command: git branch
+    description: Lista, cria ou deleta branches.
+  - command: git checkout <branch>
+    description: Muda para um branch diferente.
+  - command: git switch <branch>
+    description: Alterna para o branch especificado (alternativa ao checkout).
+  - command: git merge <branch>
+    description: Faz merge do branch especificado no branch atual.
+  - command: git log
+    description: Mostra o histórico de commits.
+  - command: git reset --hard
+    description: Reseta o diretório de trabalho para o último commit, descartando alterações.
+  - command: git fetch
+    description: Baixa objetos e referências de um repositório remoto.
+  - command: git remote -v
+    description: Lista os repositórios remotos configurados.
+  - command: git diff
+    description: Mostra as diferenças entre commits, branches, etc.
+  - command: git stash
+    description: Armazena temporariamente as alterações não comitadas.
+  - command: git stash pop
+    description: Aplica as alterações armazenadas no stash e remove-as da lista.
+  - command: git rebase <branch>
+    description: Reaplica commits no topo de outro branch.
+  - command: git cherry-pick <commit>
+    description: Aplica o commit especificado no branch atual.
+  - command: git revert <commit>
+    description: Cria um novo commit que desfaz as alterações do commit especificado.
+  - command: git tag <tag_name>
+    description: Marca um ponto específico na história do repositório.
+  - command: git show <object>
+    description: Mostra informações sobre um objeto (commit, tag, etc.).
+  - command: git blame <file>
+    description: Mostra quem modificou cada linha de um arquivo.
+  - command: git log --graph --oneline --all
+    description: Exibe o histórico de commits em formato de gráfico.
+  - command: git shortlog
+    description: Resumo do log de commits agrupados por autor.
+  - command: git rm <file>
+    description: Remove um arquivo do diretório de trabalho e do índice.
+  - command: git mv <old_name> <new_name>
+    description: Move ou renomeia um arquivo, atualizando o índice.
+  - command: git clean -f
+    description: Remove arquivos não rastreados do diretório de trabalho.
+  - command: git bisect
+    description: Usa busca binária para encontrar o commit que introduziu um bug.
+  - command: git submodule add <repo>
+    description: Adiciona um submódulo ao projeto.
+  - command: git archive
+    description: Cria um arquivo compactado de um projeto Git.
+  - command: git config --global user.name "Seu Nome"
+    description: Define o nome de usuário global para commits.
+  - command: git config --global user.email "seuemail@example.com"
+    description: Define o email global para commits.
+  - command: git config --list
+    description: Lista todas as configurações do Git.
+  - command: git reflog
+    description: Mostra o histórico de referências do HEAD e dos branches.
+  - command: git ls-files
+    description: Lista os arquivos indexados (rastreados).
+  - command: git grep <pattern>
+    description: Pesquisa por um padrão nos arquivos do repositório.
+  - command: git commit --amend
+    description: Modifica o último commit (mensagem e conteúdo).
+  - command: git log --stat
+    description: Mostra estatísticas dos arquivos alterados em cada commit.
+  - command: git remote add <name> <url>
+    description: Adiciona um novo repositório remoto.
+  - command: git remote remove <name>
+    description: Remove um repositório remoto.
+  - command: git fetch --all --prune
+    description: Atualiza todos os remotos e remove referências remotas obsoletas.
+  - command: git push --force
+    description: Força o push para o repositório remoto (sobrescreve histórico).
+  - command: git pull --rebase
+    description: Puxa as alterações e aplica seus commits no topo delas.
+  - command: git cherry
+    description: Encontra commits não aplicados de um branch em outro.
+  - command: git describe
+    description: Descreve o commit mais recente na história do repositório.
+  - command: git apply <patchfile>
+    description: Aplica um patch ao diretório de trabalho.
+  - command: git log --author="Nome"
+    description: Filtra o log para mostrar commits de um autor específico.
+  - command: git revert --no-commit <commit>
+    description: Reverte o commit especificado sem criar um novo commit imediatamente.
+  - command: git reset <file>
+    description: Remove o arquivo especificado da área de staging.
+  - command: git checkout -- <file>
+    description: Desfaz alterações em um arquivo não comitado.
+  - command: git diff --staged
+    description: Mostra as diferenças entre a área de staging e o último commit.
+  - command: git stash save "mensagem"
+    description: Salva as alterações no stash com uma mensagem descritiva.
+  - command: git stash list
+    description: Lista todas as entradas no stash.
+  - command: git stash drop
+    description: Remove a entrada mais recente do stash.
+  - command: git rm --cached <file>
+    description: Remove um arquivo da área de staging, mas mantém no diretório de trabalho.
+  - command: git log -p
+    description: Mostra o log de commits com as diferenças introduzidas em cada um.
+  - command: git diff <commit1> <commit2>
+    description: Mostra as diferenças entre dois commits.
+  - command: git reset --hard <commit>
+    description: Reseta o diretório de trabalho e o índice para o commit especificado.
+  - command: git remote rename <old_name> <new_name>
+    description: Renomeia um repositório remoto.
+  - command: git fetch <remote>
+    description: Busca atualizações de um repositório remoto específico.
+  - command: git merge --no-ff <branch>
+    description: Faz merge criando sempre um novo commit, mesmo quando um fast-forward é possível.
+  - command: git log --pretty=oneline
+    description: Mostra o log de commits em uma única linha por commit.
+  - command: git tag -a <tag_name> -m "mensagem"
+    description: Cria uma tag anotada com mensagem.
+  - command: git push --tags
+    description: Envia todas as tags para o repositório remoto.
+  - command: git rebase -i <base>
+    description: Rebase interativo, permitindo editar, reordenar ou excluir commits.
+  - command: git shortlog -sn
+    description: Mostra um resumo dos commits por autor.
+  - command: git show-branch
+    description: Mostra o gráfico de branches e seus commits.
+  - command: git config --global alias.<alias_name> '<command>'
+    description: Cria um atalho (alias) para um comando Git.

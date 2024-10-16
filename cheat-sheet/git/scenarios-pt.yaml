@@ -1,0 +1,246 @@
+# cheat-sheet/scenarios.yaml
+
+scenarios:
+  - title: Reverter um arquivo com commit errado antes de fazer push
+    problem: >
+      Commitei um arquivo por engano e ainda não fiz push. Como posso remover esse arquivo do commit?
+    solution:
+      steps:
+        - description: Voltar o commit mantendo as alterações no staging
+          command: git reset --soft HEAD~1
+        - description: Remover o arquivo da área de staging
+          command: git reset <file>
+        - description: Recommit sem o arquivo indesejado
+          command: git commit -m "Sua mensagem de commit corrigida"
+    tags:
+      - commit
+      - reset
+      - staging
+
+  - title: Desfazer um merge
+    problem: >
+      Fiz um merge que preciso desfazer. Como retorno ao estado anterior?
+    solution:
+      steps:
+        - description: Identificar o commit antes do merge usando git reflog
+          command: git reflog
+        - description: Resetar o branch para o commit anterior ao merge
+          command: git reset --hard <commit_hash>
+          caution: Isso descartará quaisquer alterações após o commit especificado.
+    tags:
+      - merge
+      - reset
+      - reflog
+
+  - title: Recuperar um arquivo deletado acidentalmente
+    problem: >
+      Deletei um arquivo importante e já comitei a deleção. Como posso recuperá-lo?
+    solution:
+      steps:
+        - description: Encontrar o commit onde o arquivo foi deletado
+          command: git log --diff-filter=D --summary
+        - description: Restaurar o arquivo deletado do commit anterior
+          command: git checkout <commit_hash>^ -- <file_path>
+        - description: Comitar a restauração do arquivo
+          command: git commit -m "Restaurar arquivo deletado acidentalmente"
+    tags:
+      - delete
+      - restore
+      - commit
+
+  - title: Modificar a mensagem do último commit
+    problem: >
+      Preciso alterar a mensagem do meu último commit. Como posso fazer isso?
+    solution:
+      steps:
+        - description: Modificar a mensagem do último commit
+          command: git commit --amend -m "Nova mensagem de commit"
+        - description: Forçar o push se já tiver feito push anteriormente
+          command: git push --force
+          caution: Tenha cuidado ao forçar o push, pois pode afetar o trabalho de outros desenvolvedores.
+    tags:
+      - commit
+      - amend
+      - message
+
+  - title: Sincronizar um fork com o repositório original
+    problem: >
+      Fiz um fork de um repositório, mas o original recebeu atualizações. Como sincronizo meu fork?
+    solution:
+      steps:
+        - description: Adicionar o repositório original como remoto upstream
+          command: git remote add upstream <original_repo_url>
+        - description: Buscar as alterações do upstream
+          command: git fetch upstream
+        - description: Fazer merge das alterações na sua branch local
+          command: git merge upstream/master
+        - description: Enviar as alterações para o seu fork no GitHub
+          command: git push origin master
+    tags:
+      - fork
+      - upstream
+      - sync
+
+  - title: Resolver conflitos de merge
+    problem: >
+      Ao fazer merge de um branch, ocorreram conflitos. Como resolvo esses conflitos?
+    solution:
+      steps:
+        - description: Identificar os arquivos com conflitos
+          command: git status
+        - description: Editar os arquivos conflitantes para resolver os conflitos
+          command: Abra os arquivos indicados e resolva os conflitos manualmente
+        - description: Marcar os arquivos como resolvidos
+          command: git add <file>
+        - description: Finalizar o merge
+          command: git commit
+    tags:
+      - merge
+      - conflict
+      - resolve
+
+  - title: Desfazer alterações locais não comitadas
+    problem: >
+      Fiz alterações em alguns arquivos, mas quero descartá-las. Como faço isso?
+    solution:
+      steps:
+        - description: Descartar alterações em um arquivo específico
+          command: git checkout -- <file>
+        - description: Descartar alterações em todos os arquivos
+          command: git reset --hard
+          caution: Isso descartará todas as alterações não comitadas. Use com cuidado.
+    tags:
+      - discard
+      - changes
+      - reset
+
+  - title: Reescrever histórico de commits com rebase interativo
+    problem: >
+      Quero combinar vários commits em um único ou modificar a ordem deles. Como posso fazer isso?
+    solution:
+      steps:
+        - description: Iniciar o rebase interativo
+          command: git rebase -i HEAD~<número_de_commits>
+        - description: Na interface que abre, modifique as ações (pick, squash, etc.) conforme desejado
+          command: Edite o arquivo aberto para reordenar ou combinar commits
+        - description: Salvar e fechar o editor para aplicar as mudanças
+          command: As mudanças serão aplicadas automaticamente
+    tags:
+      - rebase
+      - history
+      - commits
+
+  - title: Encontrar a introdução de um bug usando bisect
+    problem: >
+      Há um bug no meu código, mas não sei em qual commit ele foi introduzido. Como posso encontrar o commit problemático?
+    solution:
+      steps:
+        - description: Iniciar o bisect
+          command: git bisect start
+        - description: Marcar o commit atual como ruim
+          command: git bisect bad
+        - description: Marcar um commit conhecido como bom
+          command: git bisect good <commit_hash>
+        - description: Testar cada revisão que o Git apresenta e marcar como boa ou ruim
+          command: git bisect good ou git bisect bad
+        - description: Uma vez encontrado, encerrar o bisect
+          command: git bisect reset
+    tags:
+      - bisect
+      - bug
+      - debug
+
+  - title: Trabalhar com submódulos
+    problem: >
+      Preciso adicionar outro repositório Git dentro do meu projeto. Como posso fazer isso usando submódulos?
+    solution:
+      steps:
+        - description: Adicionar o submódulo ao projeto
+          command: git submodule add <repo_url> <path>
+        - description: Inicializar submódulos após clonar o repositório
+          command: git submodule update --init --recursive
+        - description: Atualizar todos os submódulos para suas últimas versões
+          command: git submodule update --remote
+    tags:
+      - submodule
+      - nested
+      - repository
+
+  - title: Ignorar arquivos já versionados
+    problem: >
+      Adicionei um arquivo ao controle de versão, mas agora quero ignorá-lo usando o .gitignore. Como faço isso?
+    solution:
+      steps:
+        - description: Remover o arquivo do índice (staging area)
+          command: git rm --cached <file>
+        - description: Adicionar o arquivo ao .gitignore
+          command: Edite o .gitignore e adicione o caminho do arquivo
+        - description: Comitar as mudanças
+          command: git commit -m "Remover arquivo do controle de versão e adicioná-lo ao .gitignore"
+    tags:
+      - ignore
+      - gitignore
+      - remove
+
+  - title: Clonar um repositório específico ou um branch específico
+    problem: >
+      Como posso clonar apenas um diretório específico ou um branch específico de um repositório?
+    solution:
+      steps:
+        - description: Clonar um branch específico
+          command: git clone -b <branch> --single-branch <repo_url>
+        - description: Clonar apenas um diretório específico (necessita de suporte no servidor)
+          command: git sparse-checkout set <directory>
+          caution: O uso de sparse checkout requer configurações adicionais
+    tags:
+      - clone
+      - branch
+      - directory
+
+  - title: Limpar arquivos não rastreados e diretórios
+    problem: >
+      Meu repositório está cheio de arquivos e diretórios não rastreados. Como posso removê-los rapidamente?
+    solution:
+      steps:
+        - description: Mostrar o que será removido sem executar
+          command: git clean -n -d
+        - description: Remover arquivos e diretórios não rastreados
+          command: git clean -f -d
+          caution: Certifique-se de que não precisa desses arquivos antes de removê-los
+    tags:
+      - clean
+      - untracked
+      - files
+
+  - title: Alterar a URL de um repositório remoto
+    problem: >
+      Mudei a URL do meu repositório remoto. Como atualizo o remoto no meu repositório local?
+    solution:
+      steps:
+        - description: Verificar os remotos atuais
+          command: git remote -v
+        - description: Alterar a URL do remoto
+          command: git remote set-url origin <new_url>
+        - description: Confirmar que a URL foi atualizada
+          command: git remote -v
+    tags:
+      - remote
+      - url
+      - update
+
+  - title: Excluir um branch local ou remoto
+    problem: >
+      Criei um branch que não preciso mais. Como posso excluí-lo localmente e remotamente?
+    solution:
+      steps:
+        - description: Excluir um branch local
+          command: git branch -d <branch_name>
+        - description: Forçar a exclusão se o branch não foi mesclado
+          command: git branch -D <branch_name>
+        - description: Excluir um branch remoto
+          command: git push origin --delete <branch_name>
+    tags:
+      - branch
+      - delete
+      - remote
+

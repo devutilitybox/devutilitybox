@@ -1,0 +1,143 @@
+title: Git Cheat Sheet
+description: A collaborative list of useful Git commands.
+commands:
+  - command: git init
+    description: Initializes a new Git repository.
+  - command: git clone <repo>
+    description: Clones a remote repository to your local machine.
+  - command: git status
+    description: Shows the working tree status.
+  - command: git add <file>
+    description: Adds a file to the staging area.
+  - command: git commit -m 'message'
+    description: Commits the staged changes with a message.
+  - command: git push
+    description: Pushes the commits to the remote repository.
+  - command: git pull
+    description: Fetches and integrates changes from the remote repository.
+  - command: git branch
+    description: Lists, creates, or deletes branches.
+  - command: git checkout <branch>
+    description: Switches to a different branch.
+  - command: git switch <branch>
+    description: Switches to the specified branch (an alternative to checkout).
+  - command: git merge <branch>
+    description: Merges the specified branch into the current branch.
+  - command: git log
+    description: Displays the commit history.
+  - command: git reset --hard
+    description: Resets the working directory to the last commit, discarding changes.
+  - command: git fetch
+    description: Downloads objects and references from a remote repository.
+  - command: git remote -v
+    description: Lists the configured remote repositories.
+  - command: git diff
+    description: Shows the differences between commits, branches, etc.
+  - command: git stash
+    description: Temporarily stores uncommitted changes.
+  - command: git stash pop
+    description: Applies stashed changes and removes them from the list.
+  - command: git rebase <branch>
+    description: Reapplies commits on top of another branch.
+  - command: git cherry-pick <commit>
+    description: Applies the specified commit to the current branch.
+  - command: git revert <commit>
+    description: Creates a new commit that undoes the changes from the specified commit.
+  - command: git tag <tag_name>
+    description: Marks a specific point in the repository’s history.
+  - command: git show <object>
+    description: Shows information about an object (commit, tag, etc.).
+  - command: git blame <file>
+    description: Shows who modified each line of a file.
+  - command: git log --graph --oneline --all
+    description: Displays the commit history as a graph.
+  - command: git shortlog
+    description: Summarizes the commit log grouped by author.
+  - command: git rm <file>
+    description: Removes a file from the working directory and the index.
+  - command: git mv <old_name> <new_name>
+    description: Moves or renames a file, updating the index.
+  - command: git clean -f
+    description: Removes untracked files from the working directory.
+  - command: git bisect
+    description: Uses binary search to find the commit that introduced a bug.
+  - command: git submodule add <repo>
+    description: Adds a submodule to the project.
+  - command: git archive
+    description: Creates a compressed archive of a Git project.
+  - command: git config --global user.name "Your Name"
+    description: Sets the global username for commits.
+  - command: git config --global user.email "youremail@example.com"
+    description: Sets the global email for commits.
+  - command: git config --list
+    description: Lists all Git configurations.
+  - command: git reflog
+    description: Shows the reference history for HEAD and branches.
+  - command: git ls-files
+    description: Lists the indexed (tracked) files.
+  - command: git grep <pattern>
+    description: Searches for a pattern in repository files.
+  - command: git commit --amend
+    description: Modifies the last commit (message and content).
+  - command: git log --stat
+    description: Shows file change statistics for each commit.
+  - command: git remote add <name> <url>
+    description: Adds a new remote repository.
+  - command: git remote remove <name>
+    description: Removes a remote repository.
+  - command: git fetch --all --prune
+    description: Updates all remotes and removes obsolete remote references.
+  - command: git push --force
+    description: Forces the push to the remote repository (overwrites history).
+  - command: git pull --rebase
+    description: Pulls changes and applies your commits on top of them.
+  - command: git cherry
+    description: Finds commits in one branch not applied to another.
+  - command: git describe
+    description: Describes the most recent commit in the repository's history.
+  - command: git apply <patchfile>
+    description: Applies a patch to the working directory.
+  - command: git log --author="Name"
+    description: Filters the log to show commits by a specific author.
+  - command: git revert --no-commit <commit>
+    description: Reverts the specified commit without immediately creating a new commit.
+  - command: git reset <file>
+    description: Removes the specified file from the staging area.
+  - command: git checkout -- <file>
+    description: Discards changes in an uncommitted file.
+  - command: git diff --staged
+    description: Shows differences between the staging area and the last commit.
+  - command: git stash save "message"
+    description: Saves changes to the stash with a descriptive message.
+  - command: git stash list
+    description: Lists all stash entries.
+  - command: git stash drop
+    description: Removes the most recent stash entry.
+  - command: git rm --cached <file>
+    description: Removes a file from the staging area but keeps it in the working directory.
+  - command: git log -p
+    description: Shows the commit log with differences introduced in each commit.
+  - command: git diff <commit1> <commit2>
+    description: Shows the differences between two commits.
+  - command: git reset --hard <commit>
+    description: Resets the working directory and index to the specified commit.
+  - command: git remote rename <old_name> <new_name>
+    description: Renames a remote repository.
+  - command: git fetch <remote>
+    description: Fetches updates from a specific remote repository.
+  - command: git merge --no-ff <branch>
+    description: Merges, always creating a new commit even when a fast-forward is possible.
+  - command: git log --pretty=oneline
+    description: Displays the commit log with one line per commit.
+  - command: git tag -a <tag_name> -m "message"
+    description: Creates an annotated tag with a message.
+  - command: git push --tags
+    description: Pushes all tags to the remote repository.
+  - command: git rebase -i <base>
+    description: Interactive rebase, allowing you to edit, reorder, or drop commits.
+  - command: git shortlog -sn
+    description: Displays a summary of commits by author.
+  - command: git show-branch
+    description: Displays a graph of branches and their commits.
+  - command: git config --global alias.<alias_name> '<command>'
+    description: Creates a shortcut (alias) for a Git command.

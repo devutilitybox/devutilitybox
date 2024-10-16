@@ -1,0 +1,121 @@
+# cheat-sheet/docker/scenarios.yaml
+
+scenarios:
+  - title: Conectar-se a um contêiner e investigar problemas
+    problem: >
+      Preciso acessar um contêiner em execução para verificar logs ou investigar um problema. Como faço isso?
+    solution:
+      steps:
+        - description: Usar o comando docker exec para acessar o bash do contêiner
+          command: docker exec -it <container_id> bash
+        - description: Navegar até os arquivos necessários ou verificar os logs diretamente
+          command: cat /path/to/logfile
+    tags:
+      - container
+      - troubleshooting
+      - logs
+
+  - title: Limpar recursos não utilizados (volumes, contêineres, redes)
+    problem: >
+      Meu sistema está acumulando muitos recursos Docker que não estão mais sendo usados. Como posso limpá-los?
+    solution:
+      steps:
+        - description: Limpar volumes, contêineres e redes não utilizados
+          command: docker system prune
+        - description: Limpar volumes explicitamente, se necessário
+          command: docker volume rm <volume_name>
+        - description: Limpar imagens que não estão em uso
+          command: docker image prune
+    tags:
+      - cleanup
+      - volumes
+      - images
+
+  - title: Reiniciar um contêiner com uma imagem atualizada
+    problem: >
+      Atualizei uma imagem Docker, mas meu contêiner ainda está usando a versão antiga. Como faço para reiniciar o contêiner com a imagem atualizada?
+    solution:
+      steps:
+        - description: Parar o contêiner em execução
+          command: docker stop <container_id>
+        - description: Remover o contêiner parado
+          command: docker rm <container_id>
+        - description: Executar um novo contêiner com a imagem atualizada
+          command: docker run <image>
+    tags:
+      - update
+      - container
+      - image
+
+  - title: Usar Docker Compose para desenvolvimento local
+    problem: >
+      Preciso configurar múltiplos contêineres para minha aplicação localmente (banco de dados, backend, frontend). Como faço isso de forma fácil com o Docker Compose?
+    solution:
+      steps:
+        - description: Definir os contêineres no arquivo docker-compose.yml
+          command: |
+            version: '3'
+            services:
+              db:
+                image: postgres
+                environment:
+                  POSTGRES_USER: user
+                  POSTGRES_PASSWORD: pass
+              app:
+                image: myapp
+                ports:
+                  - "3000:3000"
+                depends_on:
+                  - db
+        - description: Iniciar os serviços
+          command: docker-compose up
+        - description: Parar e remover os serviços quando não forem mais necessários
+          command: docker-compose down
+    tags:
+      - docker-compose
+      - development
+      - services
+
+  - title: Mover uma imagem Docker entre máquinas
+    problem: >
+      Preciso mover uma imagem Docker criada em uma máquina para outra sem fazer upload para um repositório público. Como posso fazer isso?
+    solution:
+      steps:
+        - description: Salvar a imagem em um arquivo tar
+          command: docker save -o <file_name>.tar <image_name>
+        - description: Transferir o arquivo para a nova máquina
+          command: Usar ferramentas como scp ou rsync para transferir o arquivo
+        - description: Carregar a imagem na nova máquina
+          command: docker load -i <file_name>.tar
+    tags:
+      - save
+      - load
+      - transfer
+
+  - title: Executar um contêiner em segundo plano
+    problem: >
+      Preciso executar um contêiner, mas não quero que ele bloqueie meu terminal. Como faço isso?
+    solution:
+      steps:
+        - description: Usar o parâmetro -d para rodar o contêiner em segundo plano
+          command: docker run -d <image_name>
+        - description: Verificar se o contêiner está em execução
+          command: docker ps
+    tags:
+      - background
+      - container
+      - detached
+
+  - title: Verificar o uso de recursos de um contêiner
+    problem: >
+      Meu contêiner está usando muita memória e CPU. Como verifico o uso de recursos de um contêiner em execução?
+    solution:
+      steps:
+        - description: Usar o comando docker stats para monitorar o uso de recursos
+          command: docker stats <container_id>
+        - description: Verificar estatísticas de todos os contêineres
+          command: docker stats
+    tags:
+      - stats
+      - resources
+      - monitoring
